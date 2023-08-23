@@ -26,7 +26,7 @@ Bcd sumaBcd(Bcd x, Bcd y) {
         shift += 4;
     }
 
-    if ((x > 0 && y > 0) && ((sum <= x)||(sum <= y))) {
+    if (exs > 0) {
         return 0xffffffffffffffff;
     }
     else {

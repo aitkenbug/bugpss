@@ -1,5 +1,5 @@
 Sistema operativo utilizado
-Linux debian11mate 5.10.0-21-amd64 #1 SMP Debian 5.10.162-1 (2023-01-21) x86_64 GNU/Linux
+Linux debian11mate 5.10.0-23-amd64 #1 SMP Debian 5.10.179-3 (2023-07-27) x86_64 GNU/Linux
 ==== run-san ====
 gcc -g -DSAN=1 -fsanitize=address -fsanitize=undefined -DSANITIZE -Wall -Werror -pedantic -std=c18 -Wno-unused-function  test-suma.c suma.c -lm -o suma.bin-san
 ./suma.bin-san
@@ -18,13 +18,13 @@ Midiendo cuanto demora la solucion del profesor
 rm -f tiempo-ref.txt
 chmod +x prof.ref-x86_64
 ./prof.ref-x86_64 ref > /dev/null
-Tiempos de referencia =  1225
+Tiempos de referencia =  1308
 Verificando y comparando con su solucion
-./suma.bin 1225
+./suma.bin 1308
 Tests de unidad 
 Tests aleatorios
 Benchmark de 10240000 llamadas a sumaBcd
-Tiempo tomado por la solucion del profesor: 1225 milisegundos
-Tiempo de cpu usado por su version: 1456 milisegundos
-Porcentaje de sobrecosto: 18 %
+Tiempo tomado por la solucion del profesor: 1308 milisegundos
+Tiempo de cpu usado por su version: 1422 milisegundos
+Porcentaje de sobrecosto: 8 %
 Bien, felicitaciones
