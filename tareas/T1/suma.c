@@ -9,8 +9,7 @@ Bcd sumaBcd(Bcd x, Bcd y) {
     Bcd sum = 0;
     Bcd tmp;
     Bcd exs = 0;
-    int shift = 0;
-    for (int i = 0; i<16; i++) {
+    for (int shift = 0; shift<64; shift+=4) {
         x_mask = (x >> shift) & mask;
         y_mask = (y >> shift) & mask;
         tmp = x_mask + y_mask + exs;
@@ -22,8 +21,6 @@ Bcd sumaBcd(Bcd x, Bcd y) {
             sum = sum + (tmp << shift);
             exs = 0x0;
         }
-        //sum = sum << shift;
-        shift += 4;
     }
 
     if (exs > 0) {
