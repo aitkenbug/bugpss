@@ -5,8 +5,14 @@
 #include "elim.h"
 
 void eliminar(char *str, char *pat) {
-  char *aux1;
-  char *aux
+    char *s = *str;
+    char *p = *pat;
+    char *old = *str;
+    while (*p != 0) {
+        if (*s == *p) {
+            s++;
+            p++;
+    }
 }
 
 char *eliminados(char *str, char *pat) {
