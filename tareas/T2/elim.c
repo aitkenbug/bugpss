@@ -25,16 +25,19 @@ char *eliminados(char *str, char *pat) {
     char *s = str;
     char *p = pat;
     char *w = str;
+    int l = 0;
     while (*s != 0) {
         while (*p != 0 && *s == *p) {
             s++;
             p++;
         }
-        *w = *s;
-        w++;
-        s++;
+        if (*p == 0) {
+            l++;
+        }
         p = pat;
+        s++
     }
-    *w = 0; 
+    s = str;
+
     return str;
 }
