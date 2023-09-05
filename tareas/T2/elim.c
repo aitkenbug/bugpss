@@ -7,21 +7,34 @@
 void eliminar(char *str, char *pat) {
     char *s = str;
     char *p = pat;
-    //char *old = str;
+    char *w = str;
     while (*s != 0) {
-        if (*s != *p) {
-            //*str = *s;
-            s++;
-            //str++;
-        }
-        while (p != 0 && *s == *p) {
+        while (*p != 0 && *s == *p) {
             s++;
             p++;
         }
-        *str = *s;
+        *w = *s;
+        w++;
+        s++;
+        p = pat;
     }
+    *w = 0;
 }
 
 char *eliminados(char *str, char *pat) {
-  return NULL;
+    char *s = str;
+    char *p = pat;
+    char *w = str;
+    while (*s != 0) {
+        while (*p != 0 && *s == *p) {
+            s++;
+            p++;
+        }
+        *w = *s;
+        w++;
+        s++;
+        p = pat;
+    }
+    *w = 0; 
+    return str;
 }
