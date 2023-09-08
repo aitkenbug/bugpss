@@ -36,21 +36,26 @@ char *eliminados(char *str, char *pat) {
     int l = 0;
     char *old = str;
     while (*s != 0) {
-        while (*p != 0 && *s == *p) {
-            p++;
+        while (*s != *p && *s != 0){
             s++;
         }
-        if (*p == 0) {
-            l++;
+        if (s != 0){
+            break;
         }
-        p = pat;
-        if (*s != 0){
+        char *rp = p;
+        while (*s == *rp) {
             s++;
+            rp++;
+            if (*rp == 0) {
+                l++;
+            }
         }
     }
     s = str;
     p = pat;
-    char *r = malloc((strlen(str)-strlen(pat)*l+2));
+    int str_len = strlen(str)+1;
+    int pat_len = strlen(pat);
+    char *r = (char*)malloc(sizeof(char)*(str_len-(pat_len*l)+1));
     char *w = r;
     while (*s != 0) {
         if (*s == *p) {
@@ -60,7 +65,13 @@ char *eliminados(char *str, char *pat) {
                 p++;
             }
             if (*p != 0) {
-                s = old;
+                while (old < s) {
+                    *w = *old;
+                    old++;
+                    w++;
+                }
+            //s = old;
+
             }
         }
         *w = *s;

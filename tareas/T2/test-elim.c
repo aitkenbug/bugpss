@@ -242,8 +242,6 @@ int main(int argc, char *argv[]) {
       int tiempo= getTime()-start;
       tiempo_eliminar= tiempo;
       if (!equals(s, ref)) {
-        printf("-----\ns:   %s \n-----",s);
-        printf("-----\nref: %s \n-----",ref);
         fprintf(stderr, "Resultado incorrecto en benchmark de eliminar\n");
         exit(1);
       }
