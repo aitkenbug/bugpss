@@ -8,10 +8,17 @@ void eliminar(char *str, char *pat) {
     char *s = str;
     char *p = pat;
     char *w = str;
+    char *old = str;
     while (*s != 0) {
-        while (*p != 0 && *s == *p) {
-            p++;
-            s++;
+        if (*s == *p) {
+            old = s;
+            while (*p != 0 && *s == *p) {
+                s++;
+                p++;
+            }
+            if (*p != 0) {
+                s = old;
+            }
         }
         *w = *s;
         w++;
@@ -27,6 +34,7 @@ char *eliminados(char *str, char *pat) {
     char *s = str;
     char *p = pat;
     int l = 0;
+    char *old = str;
     while (*s != 0) {
         while (*p != 0 && *s == *p) {
             p++;
@@ -42,12 +50,18 @@ char *eliminados(char *str, char *pat) {
     }
     s = str;
     p = pat;
-    char *r = (char*)malloc((strlen(str)-strlen(pat)*l+2)*sizeof(char));
+    char *r = malloc((strlen(str)-strlen(pat)*l+2));
     char *w = r;
     while (*s != 0) {
-        while (*p != 0 && *s == *p) {
-            s++;
-            p++;
+        if (*s == *p) {
+            old = s;
+            while (*p != 0 && *s == *p) {
+                s++;
+                p++;
+            }
+            if (*p != 0) {
+                s = old;
+            }
         }
         *w = *s;
         w++;
