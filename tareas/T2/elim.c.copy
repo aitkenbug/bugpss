@@ -7,35 +7,31 @@
 void eliminar(char *str, char *pat) {
     char *s = str;
     char *p = pat;
-    char *w = str;
-    char *old = str;
-    while (*s != 0) {
-        if (*s == *p) {
-            old = s;
-            while (*p != 0 && *s == *p) {
-                s++;
-                p++;
-            }
-            if (*p != 0) {
-                while (old < s) {
-                    *w = *old;
-                    old++;
-                    w++;
-                }
-            //s = old;
-
-            }
+    char *d = str;
+    char *m = str;
+    while (*m != 0) {
+        //Si encuentro el patron y este no es nulo veo el siguiente
+        if (*s == *p && *p != 0) {
+            s++; //searcher++
+            p++; //patron++
         }
-        *w = *s;
-        w++;
-        if (*s != 0) {
-            s++;
+        //Si no encuentro al patron
+        else {
+            if (*p == 0) {
+                m = s; //si el patron es o recupero la memoria sin el patron
+            }
+            else {
+                //muevo la memoria con el buscador
+                *d = *m;
+                d++;
+                m++;
+                s = m;
+            }
+        p = pat; //reinicio el patron para cada iteracion
         }
-        p = pat;
     }
-    *w = 0;
+    *d = *m;
 }
-
 char *eliminados(char *str, char *pat) {
     char *s = str;
     char *p = pat;
