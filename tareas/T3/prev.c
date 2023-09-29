@@ -3,19 +3,15 @@
 #include "prev.h"
 
 void asignarPrev(Nodo *t, Nodo **pprev) {
-  if (t->izq == NULL) {
-  return;
-  }
-  if (t->der == NULL) {
+  if (t == NULL) {
     return;
-  } 
-  else {
-    t->prev = *pprev;
-    t->prox = NULL;
-    if (*pprev != NULL) {
-        (*pprev)->prox = t;
-    }
-    *pprev = t;
-    asignarPrev(t,pprev);
   }
+  asignarPrev(t->izq, pprev);
+  t->prev = *pprev;
+  t->prox = NULL;
+  if (*pprev != NULL) {
+    (*pprev)->prox = t;
+  }
+  *pprev = t;
+  asignarPrev(t->der, pprev);
 }
