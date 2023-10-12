@@ -1,0 +1,24 @@
+buffer: 
+key   : embarcacion
+
+
+buffer: 
+key   : casa
+
+
+buffer: 
+key   : lluvia
+
+
+buffer: correr
+key   : alimento
+
+
+buffer: 
+key   : celular
+
+
+buffer: correr
+key   : alimento
+
+
