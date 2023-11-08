@@ -35,16 +35,76 @@ sort:                   # void sort(uint nums[], int n) { // registros a0, a1
     #################################################
     ### Comienza el codigo que Ud. debe modificar ###
     #################################################
+    
+    lw a0,0(t0)
+    lw a5,4(t0)
+    li a2,32 #32 in ascii is ' '
+    li a3,0 #Flag csm (chainsaw man)
+    li a4,0 #counter
+    li a6,0 #COUnTER 2!!!!! (CSGO v2)
+
+.contar_0:
+    lbu a1,0(a0)
+    beq a1,zero,.int
+    beq a1,a2,.contar_mas
+    beq a3,zero,.sum
+    addi a0,a0,1
+    j .contar_0
+
+.int:
+    and a3,a3,0
+    j .contar_1
+
+.contar_mas:
+    addi a0,a0,1
+    and a3,a3,0
+    j .contar_0
+
+.contar_mas_mas:
+    addi a5,a5,1
+    and a3,a3,0
+    j .contar_1
+
+.sum:
+    addi a4,a4,1
+    or a3,a3,1
+    addi a0,a0,1
+    j .contar_0
+
+.ssuumm:
+    addi a6,a6,1
+    or a3,a3,1
+    addi a5,a5,1
+    j .contar_1
+
+.contar_1:
+    lbu a1,0(a5)
+    beq a1,zero,.compa
+    beq a1,a2,.contar_mas_mas
+    beq a3,zero,.ssuumm
+    addi a5,a5,1
+    j .contar_1
+
+.compa:
+    sub t1,a4,a6
+    
+
+
+
+    
+
+
+
 
     # no puede alterar los registros s0-s11, si lo hace debe resguardarlos
     # en 0(sp), 4(sp), ... o 44(sp)
     # El valor de p esta temporalmente en el registro t0
     # No puede hacer mas trabajo que la comparacion (no puede usar ret)
-    lw      a0,0(t0)    #     int rc= strcmp(p[0], p[1]); // registro t1
-    lw      a1,4(t0)
-    call    strcmp      #     // valor retornado queda en registro a0
+    #lw      a0,0(t0)    #     int rc= strcmp(p[0], p[1]); // registro t1
+    #lw      a1,4(t0)
+    #    call    strcmp      #     // valor retornado queda en registro a0
                         #     // p ya no esta en el registro t0
-    mv      t1,a0       #     // Dejar resultado de la comparacion en t1
+    #mv      t1,a0       #     // Dejar resultado de la comparacion en t1
 
     # En el registro t1 debe quedar la conclusion de la comparacion:
     # si t1<=0 p[0] y p[1] estan en orden y no se intercambiaran.
